@@ -1,0 +1,11 @@
+default: &default
+  adapter: postgresql
+  host: 127.0.0.1
+  encoding: unicode
+  pool: 5
+  username: webprog2016
+  password: webprog2016
+
+development:
+  <<: *default
+  database: convictor  
