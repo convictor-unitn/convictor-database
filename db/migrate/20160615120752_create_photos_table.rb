@@ -8,7 +8,7 @@ class CreatePhotosTable < ActiveRecord::Migration
         updated_at TIMESTAMP,
         url TEXT NOT NULL,
         description TEXT,
-        restaurant_id INTEGER
+        restaurant_id INTEGER,
         PRIMARY KEY(id),
         FOREIGN KEY (restaurant_id) REFERENCES restaurants (id)
       );

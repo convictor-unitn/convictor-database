@@ -10,7 +10,7 @@ class CreateReviewNoticesTable < ActiveRecord::Migration
         registered_user_id INTEGER,
         PRIMARY KEY(id),
         FOREIGN KEY (registered_user_id) REFERENCES users (id),
-        FOREIGN KEY (review) REFERENCES reviews (id)
+        FOREIGN KEY (review_id) REFERENCES reviews (id)
       );
     SQL
   end

@@ -2,7 +2,7 @@ class CreateRestaurantTable < ActiveRecord::Migration
 
   def self.up
     execute <<-SQL
-      CREATE TABLE restaurant (
+      CREATE TABLE restaurants (
         id INTEGER ,
         created_at TIMESTAMP,
         updated_at TIMESTAMP,
@@ -17,9 +17,7 @@ class CreateRestaurantTable < ActiveRecord::Migration
         rating INTEGER,
         main_photo_id INTEGER,
         restaurant_owner_id INTEGER,
-        PRIMARY_KEY(id),
-        FOREIGN KEY (restaurant_owner_id) REFERENCES users (id),
-        FOREIGN KEY (main_photo_id) REFERENCES photos (id)
+        PRIMARY KEY(id)
       );
     SQL
   end
@@ -27,7 +25,7 @@ class CreateRestaurantTable < ActiveRecord::Migration
   # Inverse method, destroy the table created
   def self.down
     execute <<-SQL
-      DROP TABLE restaurant;
+      DROP TABLE restaurants;
     SQL
   end
 
