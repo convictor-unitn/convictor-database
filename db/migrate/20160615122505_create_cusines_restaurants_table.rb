@@ -9,7 +9,9 @@ class CreateCusinesRestaurantsTable < ActiveRecord::Migration
         photo_id INTEGER,
         restaurant_id INTEGER,
         cusine_id INTEGER,
-        PRIMARY KEY(id)
+        PRIMARY KEY(id),
+        FOREIGN KEY (cusine_id) REFERENCES cusines (id),
+        UNIQUE (restaurant_id, cusine_id)
       );
     SQL
   end

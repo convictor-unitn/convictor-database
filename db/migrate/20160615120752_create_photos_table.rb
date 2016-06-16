@@ -6,7 +6,7 @@ class CreatePhotosTable < ActiveRecord::Migration
         id INTEGER,
         created_at TIMESTAMP,
         updated_at TIMESTAMP,
-        url TEXT NOT NULL,
+        url TEXT NOT NULL UNIQUE,
         description TEXT,
         restaurant_id INTEGER,
         PRIMARY KEY(id),

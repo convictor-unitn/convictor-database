@@ -2,11 +2,11 @@ class CreateCusinesTable < ActiveRecord::Migration
 
   def self.up
     execute <<-SQL
-      CREATE TABLE cusines_notices (
+      CREATE TABLE cusines (
         id INTEGER,
         created_at TIMESTAMP,
         updated_at TIMESTAMP,
-        name TEXT,
+        name TEXT UNIQUE,
         PRIMARY KEY(id)
       );
     SQL
@@ -14,7 +14,7 @@ class CreateCusinesTable < ActiveRecord::Migration
 
   def self.down
     execute <<-SQL
-      DROP TABLE cusines_notices;
+      DROP TABLE cusines;
     SQL
   end
 

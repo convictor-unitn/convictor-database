@@ -3,9 +3,12 @@ class CreateRestaurantOwnersTable < ActiveRecord::Migration
   def self.up
     execute <<-SQL
       CREATE TABLE restaurant_owners (
-        id INTEGER UNIQUE NOT NULL,
+        id INTEGER,
         created_at TIMESTAMP,
-        updated_at TIMESTAMP
+        updated_at TIMESTAMP,
+        user_id INTEGER UNIQUE,
+        PRIMARY KEY (id),
+        FOREIGN KEY (user_id) REFERENCES users (id)
       );
     SQL
   end

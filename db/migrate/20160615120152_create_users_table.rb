@@ -6,7 +6,7 @@ class CreateUsersTable < ActiveRecord::Migration
         id INTEGER,
         created_at TIMESTAMP,
         updated_at TIMESTAMP,
-        email TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
         name TEXT,
         surname TEXT,

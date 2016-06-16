@@ -6,8 +6,8 @@ class CreatePriceSlotsTable < ActiveRecord::Migration
         id INTEGER,
         created_at TIMESTAMP,
         updated_at TIMESTAMP,
-        slot INTEGER,
-        name text,
+        slot INTEGER UNIQUE,
+        name text UNIQUE,
         PRIMARY KEY(id)
       );
     SQL
