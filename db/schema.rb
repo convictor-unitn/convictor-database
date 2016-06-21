@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617200839) do
+ActiveRecord::Schema.define(version: 20160621195807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160617200839) do
     t.datetime "updated_at"
     t.integer  "registered_user_id"
     t.integer  "restaurant_id"
+    t.boolean  "approved"
   end
 
   create_table "photo_notices", force: :cascade do |t|
@@ -55,7 +56,14 @@ ActiveRecord::Schema.define(version: 20160617200839) do
     t.datetime "updated_at"
     t.integer  "photo_id"
     t.integer  "registered_user_id"
-    t.boolean  "remove"
+  end
+
+  create_table "photo_remove_notices", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "registered_user_id"
+    t.integer  "photo_id"
+    t.boolean  "approved"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -136,6 +144,8 @@ ActiveRecord::Schema.define(version: 20160617200839) do
   add_foreign_key "ownership_notices", "users", column: "registered_user_id", name: "ownership_notices_registered_user_id_fkey"
   add_foreign_key "photo_notices", "photos", name: "photo_notices_photo_id_fkey"
   add_foreign_key "photo_notices", "users", column: "registered_user_id", name: "photo_notices_registered_user_id_fkey"
+  add_foreign_key "photo_remove_notices", "photos", name: "photo_remove_notices_photo_id_fkey"
+  add_foreign_key "photo_remove_notices", "users", column: "registered_user_id", name: "photo_remove_notices_registered_user_id_fkey"
   add_foreign_key "photos", "restaurants", name: "photos_restaurant_id_fkey"
   add_foreign_key "restaurant_owners", "users", name: "restaurant_owners_user_id_fkey"
   add_foreign_key "restaurants", "photos", column: "main_photo_id", name: "fk_restaurant_main_photo"
