@@ -1,8 +1,8 @@
 class AlterAllTableAddIntegerDefault < ActiveRecord::Migration
   def self.up
     execute <<-SQL
-      ALTER TABLE restaurants ALTER COLUMN slot_price DEFAULT 0;
-      ALTER TABLE restaurants ALTER COLUMN rating DEFAULT 0;
+      ALTER TABLE restaurants ALTER COLUMN slot_price SET DEFAULT 0;
+      ALTER TABLE restaurants ALTER COLUMN rating SET DEFAULT 0;
 
     SQL
   end
