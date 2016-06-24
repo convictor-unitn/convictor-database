@@ -112,9 +112,11 @@ ActiveRecord::Schema.define(version: 20160624151500) do
     t.text     "email"
     t.text     "phone"
     t.text     "searchable"
+    t.tsvector "tsv"
   end
 
   add_index "restaurants", ["searchable"], name: "restaurant_search_idx", using: :gin
+  add_index "restaurants", ["tsv"], name: "restaurant_fulltext_search_idx", using: :gin
 
   create_table "review_notices", force: :cascade do |t|
     t.datetime "created_at"
