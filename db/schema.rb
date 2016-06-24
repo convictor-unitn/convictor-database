@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622181914) do
+ActiveRecord::Schema.define(version: 20160623165252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,9 @@ ActiveRecord::Schema.define(version: 20160622181914) do
     t.integer  "rating"
     t.integer  "main_photo_id"
     t.integer  "restaurant_owner_id"
+    t.text     "street"
+    t.text     "email"
+    t.text     "phone"
   end
 
   create_table "review_notices", force: :cascade do |t|
@@ -138,6 +141,7 @@ ActiveRecord::Schema.define(version: 20160622181914) do
   add_index "users", ["email"], name: "users_email_key", unique: true, using: :btree
 
   add_foreign_key "cusines_restaurants", "cusines", name: "cusines_restaurants_cusine_id_fkey"
+  add_foreign_key "cusines_restaurants", "restaurants", name: "fk_restaurant_cusines_id"
   add_foreign_key "opening_times", "restaurants", name: "opening_times_restaurant_id_fkey"
   add_foreign_key "ownership_notices", "restaurants", name: "ownership_notices_restaurant_id_fkey"
   add_foreign_key "ownership_notices", "users", column: "registered_user_id", name: "ownership_notices_registered_user_id_fkey"
