@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625130846) do
+ActiveRecord::Schema.define(version: 20160701142253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,11 +115,11 @@ ActiveRecord::Schema.define(version: 20160625130846) do
     t.text     "email"
     t.text     "phone"
     t.text     "searchable"
-    t.tsvector "tsv"
+    t.float    "lat",                 default: 0.0, null: false
+    t.float    "lng",                 default: 0.0, null: false
   end
 
   add_index "restaurants", ["searchable"], name: "restaurant_search_idx", using: :gin
-  add_index "restaurants", ["tsv"], name: "restaurant_fulltext_search_idx", using: :gin
 
   create_table "review_notices", force: :cascade do |t|
     t.datetime "created_at"
