@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701142253) do
+ActiveRecord::Schema.define(version: 20160720123637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,14 +140,17 @@ ActiveRecord::Schema.define(version: 20160701142253) do
   create_table "users", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "email",      null: false
-    t.text     "password",   null: false
+    t.text     "email",                  null: false
+    t.text     "password",               null: false
     t.text     "name"
     t.text     "surname"
     t.boolean  "admin"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
   end
 
   add_index "users", ["email"], name: "users_email_key", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "cusines_restaurants", "cusines", name: "cusines_restaurants_cusine_id_fkey"
   add_foreign_key "cusines_restaurants", "restaurants", name: "fk_restaurant_cusines_id"
