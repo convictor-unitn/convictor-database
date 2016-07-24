@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724112415) do
+ActiveRecord::Schema.define(version: 20160724154236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 20160724112415) do
     t.tsvector "tsv"
     t.string   "company_name"
     t.string   "vat_number"
-    t.string   "fiscal_code"
+    t.string   "tax_code"
   end
 
   add_index "restaurants", ["searchable"], name: "restaurant_search_idx", using: :gin
